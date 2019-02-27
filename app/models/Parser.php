@@ -6,24 +6,44 @@
  * Time: 23:16
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models;
+namespace app\models;
 
-use NicholasMuestras\AllDifferentDirections\interfaces\ParserInterface;
+use app\interfaces\ParserInterface;
 
 /**
  * Class Parser
- * @package NicholasMuestras\AllDifferentDirections\models
+ * @package app\models
  */
 class Parser implements ParserInterface
 {
+    /**
+     * @var array
+     */
     private static $dictionary = ['start' => 'start', 'walk' => 'walk', 'turn' => 'turn'];
+    /**
+     * @var array
+     */
     private static $limits = ['testCaseMax' => 100, 'waysPerCaseMax' => 20, 'waysInCurrentCase' => 0];
+    /**
+     * @var array
+     */
     private static $counters = ['testCaseCurrent' => 0, 'wayCurrent' => 0];
 
+    /**
+     * @var array
+     */
     private static $rawData = [];
+    /**
+     * @var array
+     */
     private static $data = [];
 
 
+    /**
+     * @param $rawData
+     * @return TravelCaseCollection
+     * @throws \Exception
+     */
     public static function run($rawData): TravelCaseCollection
     {
         $travelCaseCollection = new TravelCaseCollection('default');
@@ -57,6 +77,10 @@ class Parser implements ParserInterface
     }
 
 
+    /**
+     * @param int $currentKey
+     * @return bool
+     */
     private static function isInitTestCaseInteger(int &$currentKey)
     {
         $value = trim(self::$rawData[$currentKey]);
@@ -71,6 +95,10 @@ class Parser implements ParserInterface
     }
 
 
+    /**
+     * @param int $currentKey
+     * @return bool
+     */
     private static function isWay(int &$currentKey)
     {
         $value = self::$rawData[$currentKey];
@@ -84,6 +112,12 @@ class Parser implements ParserInterface
     }
 
 
+    /**
+     * @param Way $way
+     * @param string $commandString
+     * @return \Exception
+     * @throws \Exception
+     */
     private static function buildWay(Way &$way, string $commandString)
     {
         $commandStart = &self::$dictionary['start'];

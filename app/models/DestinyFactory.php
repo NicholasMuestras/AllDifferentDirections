@@ -6,11 +6,20 @@
  * Time: 23:09
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models;
+namespace app\models;
 
 
+/**
+ * Class DestinyFactory
+ * @package app\models
+ */
 class DestinyFactory
 {
+    /**
+     * @param Traveler $traveler
+     * @param Way $way
+     * @return Traveler
+     */
     public static function happen(Traveler $traveler, Way $way): Traveler
     {
         foreach ($way as $momentOfLife) {

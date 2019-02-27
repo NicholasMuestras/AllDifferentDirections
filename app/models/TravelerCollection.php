@@ -6,33 +6,56 @@
  * Time: 18:14
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models;
+namespace app\models;
 
-use NicholasMuestras\AllDifferentDirections\interfaces\Point2DInterface;
-use NicholasMuestras\AllDifferentDirections\models\point\Point2D;
+use app\interfaces\Point2DInterface;
+use app\models\point\Point2D;
 
 
+/**
+ * Class TravelerCollection
+ * @package app\models
+ */
 class TravelerCollection
 {
 
+    /**
+     * @var string
+     */
     private $_id;
+    /**
+     * @var array
+     */
     private $_items = [];
 
+    /**
+     * @var array
+     */
     private $_distances = [];
 
 
+    /**
+     * TravelerCollection constructor.
+     * @param string $id
+     */
     public function __construct(string $id)
     {
         $this->_id = $id;
     }
 
 
+    /**
+     * @param Traveler $traveler
+     */
     public function add(Traveler $traveler)
     {
         $this->_items[] = $traveler;
     }
 
 
+    /**
+     * @return array
+     */
     public function getTravelersPositions(): array
     {
         $positions = [];
@@ -46,6 +69,9 @@ class TravelerCollection
     }
 
 
+    /**
+     * @return array
+     */
     public function getTravelersPoints(): array
     {
         $points = [];
@@ -58,6 +84,10 @@ class TravelerCollection
     }
 
 
+    /**
+     * @return Point2DInterface
+     * @throws \Exception
+     */
     public function calcAverageDestinationPoint(): Point2DInterface
     {
         $x = 0;
@@ -80,6 +110,12 @@ class TravelerCollection
     }
 
 
+    /**
+     * @param Point2DInterface $a
+     * @param Point2DInterface $b
+     * @param int $roundPrecision
+     * @return float
+     */
     public static function calcDistanceBetweenPoints(Point2DInterface $a, Point2DInterface $b, int $roundPrecision = 4): float
     {
         $xA = $a->getX();
@@ -91,6 +127,10 @@ class TravelerCollection
     }
 
 
+    /**
+     * @return array
+     * @throws \Exception
+     */
     public function calcDistanceBetweenDestinationPointsAndAverageDestinationPoint(): array
     {
 
@@ -106,12 +146,19 @@ class TravelerCollection
     }
 
 
+    /**
+     * @return float
+     */
     public function getMaxDistance(): float
     {
         return max($this->_distances);
     }
 
 
+    /**
+     * @return array
+     * @throws \Exception
+     */
     public function getReport(): array
     {
         // Painter::draw(array_merge($this->getTravelersPoints(), [[$this->calcAverageDestinationPoint()]]), 500, 500);

@@ -6,9 +6,13 @@
  * Time: 16:37
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models\command;
+namespace app\models\command;
 
 
+/**
+ * Class TurnCommand
+ * @package app\models\command
+ */
 class TurnCommand extends CommandAbstract
 {
 

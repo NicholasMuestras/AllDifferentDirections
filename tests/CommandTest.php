@@ -6,7 +6,7 @@
  * Time: 21:15
  */
 
-use NicholasMuestras\AllDifferentDirections\models\command\HomePoint;
+use app\models\command\HomePoint;
 
 
 class CommandTest extends PHPUnit\Framework\TestCase
@@ -27,7 +27,7 @@ class CommandTest extends PHPUnit\Framework\TestCase
         $vocabulary = ['Start', 'Turn', 'Walk'];
 
         foreach ($vocabulary as $word) {
-            $className = 'NicholasMuestras\AllDifferentDirections\models\command\\' . $word . 'Command';
+            $className = 'app\models\command\\' . $word . 'Command';
             $command = new $className(25.5);
 
             $this->assertEquals(25.5, $command->getValue());

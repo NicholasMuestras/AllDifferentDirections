@@ -6,15 +6,22 @@
  * Time: 16:46
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models;
+namespace app\models;
 
-use NicholasMuestras\AllDifferentDirections\traits\IteratorAggregateTrait;
+use app\traits\IteratorAggregateTrait;
 
 
+/**
+ * Class TravelCaseCollection
+ * @package app\models
+ */
 class TravelCaseCollection implements \IteratorAggregate
 {
     use IteratorAggregateTrait;
 
+    /**
+     * @var
+     */
     private $_id;
 
     /**
@@ -27,16 +34,25 @@ class TravelCaseCollection implements \IteratorAggregate
     }
 
 
+    /**
+     * @return mixed
+     */
     public function getId()
     {
         return $this->_id;
     }
 
+    /**
+     * @return mixed
+     */
     public function getCurrent() // todo check - maybe bicycle
     {
         return current($this->_items);
     }
 
+    /**
+     * @return bool
+     */
     public function deleteLastEmptyCase(): bool
     {
         $lastCase = array_pop($this->_items);

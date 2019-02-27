@@ -6,14 +6,24 @@
  * Time: 16:26
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models\command;
+namespace app\models\command;
 
-use NicholasMuestras\AllDifferentDirections\interfaces\CommandInterface;
+use app\interfaces\CommandInterface;
 
 
+/**
+ * Class HomePoint
+ * @package app\models\command
+ */
 class HomePoint implements CommandInterface
 {
+    /**
+     * @var float
+     */
     private $_x;
+    /**
+     * @var float
+     */
     private $_y;
 
     /**
@@ -43,6 +53,9 @@ class HomePoint implements CommandInterface
     }
 
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         return 'home';

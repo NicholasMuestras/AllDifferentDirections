@@ -6,15 +6,26 @@
  * Time: 16:38
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models\command;
+namespace app\models\command;
 
-use NicholasMuestras\AllDifferentDirections\interfaces\CommandInterface;
+use app\interfaces\CommandInterface;
 
 
+/**
+ * Class CommandAbstract
+ * @package app\models\command
+ */
 abstract class CommandAbstract implements CommandInterface
 {
+    /**
+     * @var float
+     */
     private $_value;
 
+    /**
+     * CommandAbstract constructor.
+     * @param float $value
+     */
     public function __construct(float $value)
     {
         $this->_value = $value;
@@ -29,6 +40,9 @@ abstract class CommandAbstract implements CommandInterface
     }
 
 
+    /**
+     * @return string
+     */
     public function getName(): string
     {
         $parts = explode('\\', get_called_class());

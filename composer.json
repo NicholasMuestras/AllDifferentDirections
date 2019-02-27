@@ -1,7 +1,7 @@
 {
   "autoload": {
     "psr-4": {
-      "NicholasMuestras\\AllDifferentDirections\\": "app"
+      "app\\": "app"
     }
   },
   "require": {

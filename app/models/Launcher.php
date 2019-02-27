@@ -6,21 +6,39 @@
  * Time: 22:18
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models;
+namespace app\models;
 
 
+/**
+ * Class Launcher
+ * @package app\models
+ */
 class Launcher
 {
+    /**
+     * @var TravelCaseCollection|array
+     */
     private $_travelCases = [];
+    /**
+     * @var array
+     */
     private $_travelersCollections = [];
 
 
+    /**
+     * Launcher constructor.
+     * @param string $rawData
+     * @throws \Exception
+     */
     public function __construct(string $rawData)
     {
         $this->_travelCases = Parser::run($rawData);
     }
 
 
+    /**
+     * @return string
+     */
     public function run()
     {
         $this->_travelersCollections = $this->followTravelCases();
@@ -29,6 +47,9 @@ class Launcher
     }
 
 
+    /**
+     * @return array
+     */
     protected function followTravelCases()
     {
         $travelerCollections = [];
@@ -54,6 +75,11 @@ class Launcher
     }
 
 
+    /**
+     * @param string $reportGlue
+     * @param string $itemGlue
+     * @return string
+     */
     protected function getResultAsString(string $reportGlue = PHP_EOL, string $itemGlue = ' ')
     {
         $string = '';

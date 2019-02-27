@@ -11,7 +11,7 @@ $title = 'All Different Directions';
 
 if (!empty($_POST['request']) && preg_match("/^[0-9a-z \s\.\-]+$/", $_POST['request'])) {
     $rawData = $_POST['request'];
-    $launcher = new NicholasMuestras\AllDifferentDirections\models\Launcher($rawData);
+    $launcher = new app\models\Launcher($rawData);
 }
 
 ?>

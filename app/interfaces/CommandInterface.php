@@ -6,13 +6,23 @@
  * Time: 15:28
  */
 
-namespace NicholasMuestras\AllDifferentDirections\interfaces;
+namespace app\interfaces;
 
 
+/**
+ * Interface CommandInterface
+ * @package app\interfaces
+ */
 interface CommandInterface
 {
+    /**
+     * @return string
+     */
     public function getName(): string;
 
+    /**
+     * @return float
+     */
     public function getValue(): float;
 
 }

@@ -6,12 +6,20 @@
  * Time: 21:11
  */
 
-namespace NicholasMuestras\AllDifferentDirections\interfaces;
+namespace app\interfaces;
 
-use NicholasMuestras\AllDifferentDirections\models\TravelCaseCollection;
+use app\models\TravelCaseCollection;
 
 
+/**
+ * Interface ParserInterface
+ * @package app\interfaces
+ */
 interface ParserInterface
 {
+    /**
+     * @param $data
+     * @return TravelCaseCollection
+     */
     public static function run($data): TravelCaseCollection;
 }

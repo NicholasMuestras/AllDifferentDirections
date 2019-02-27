@@ -5,7 +5,7 @@
  * Date: 16.02.2019
  * Time: 22:50
  */
-namespace NicholasMuestras\AllDifferentDirections\traits;
+namespace app\traits;
 
 
 trait IteratorAggregateTrait

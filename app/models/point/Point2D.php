@@ -6,9 +6,9 @@
  * Time: 0:28
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models\point;
+namespace app\models\point;
 
-use NicholasMuestras\AllDifferentDirections\interfaces\Point2DInterface;
+use app\interfaces\Point2DInterface;
 
 
 class Point2D implements Point2DInterface

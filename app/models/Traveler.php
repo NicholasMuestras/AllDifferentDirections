@@ -6,21 +6,47 @@
  * Time: 16:33
  */
 
-namespace NicholasMuestras\AllDifferentDirections\models;
+namespace app\models;
 
-use NicholasMuestras\AllDifferentDirections\interfaces\Point2DInterface;
-use NicholasMuestras\AllDifferentDirections\models\point\Point2D;
-use NicholasMuestras\AllDifferentDirections\models\point\PositionPoint;
+use app\interfaces\Point2DInterface;
+use app\models\point\Point2D;
+use app\models\point\PositionPoint;
 
 
+/**
+ * Class Traveler
+ * @package app\models
+ */
 class Traveler
 {
+    /**
+     * @var string
+     */
     private $_name;
+    /**
+     * @var
+     */
     private $_x;
+    /**
+     * @var
+     */
     private $_y;
+    /**
+     * @var
+     */
     private $_direction;
+    /**
+     * @var
+     */
     private $_points;
 
+    /**
+     * Traveler constructor.
+     * @param string $id
+     * @param float $x
+     * @param float $y
+     * @param float $direction
+     */
     public function __construct(string $id, float $x = 0, float $y = 0, float $direction = 0)
     {
         $this->_name = $id;
@@ -28,12 +54,19 @@ class Traveler
     }
 
 
+    /**
+     * @return string
+     */
     public function getId(): string
     {
         return $this->_name;
     }
 
 
+    /**
+     * @param float $x
+     * @param float $y
+     */
     public function setHomePoint(float $x, float $y)
     {
         $this->_x = $x;
@@ -41,6 +74,9 @@ class Traveler
     }
 
 
+    /**
+     * @param float $direction
+     */
     public function start(float $direction)
     {
         $this->turn($direction);
@@ -48,6 +84,9 @@ class Traveler
     }
 
 
+    /**
+     * @param float $direction
+     */
     public function turn(float $direction)
     {
         $this->_direction = $this->_direction + $direction;
@@ -64,6 +103,9 @@ class Traveler
     }
 
 
+    /**
+     * @param float $distance
+     */
     public function walk(float $distance)
     {
         $this->_x = $this->_x + $distance * round(cos(deg2rad($this->_direction)), 2);
@@ -73,24 +115,38 @@ class Traveler
     }
 
 
+    /**
+     * @return Point2DInterface
+     */
     public function getPosition(): Point2DInterface
     {
         return new Point2D($this->_x, $this->_y);
     }
 
 
+    /**
+     * @return float
+     */
     public function getDirection(): float
     {
         $this->_direction;
     }
 
 
+    /**
+     * @param float $x
+     * @param float $y
+     * @param float $direction
+     */
     private function checkPoint(float $x, float $y, float $direction)
     {
         $this->_points[] = new PositionPoint($x, $y, $direction);
     }
 
 
+    /**
+     * @return mixed
+     */
     public function getPoints()
     {
         return $this->_points;
