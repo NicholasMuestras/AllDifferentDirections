@@ -10,7 +10,10 @@ namespace NicholasMuestras\AllDifferentDirections\models;
 
 use NicholasMuestras\AllDifferentDirections\interfaces\ParserInterface;
 
-
+/**
+ * Class Parser
+ * @package NicholasMuestras\AllDifferentDirections\models
+ */
 class Parser implements ParserInterface
 {
     private static $dictionary = ['start' => 'start', 'walk' => 'walk', 'turn' => 'turn'];

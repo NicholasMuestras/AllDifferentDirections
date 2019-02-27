@@ -34,7 +34,7 @@ class Traveler
     }
 
 
-    public function setHomePoint(float $x, float $y, float $direction = 0)
+    public function setHomePoint(float $x, float $y)
     {
         $this->_x = $x;
         $this->_y = $y;
